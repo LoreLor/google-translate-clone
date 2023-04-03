@@ -23,7 +23,7 @@ function App () {
     result,
     setResult,
     interchangeLanguages,
-    loading,
+    loading
    
   } = useStore()
 
