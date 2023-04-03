@@ -30,6 +30,7 @@ const Textarea: FC<Props> = ({ autoFocus, type, loading, value, onChange }) => {
   return (
     <Form.Control
         as='textarea'
+        disabled={type === SectionType.To}
         autoFocus={ type === SectionType.From ? autoFocus : false}
         placeholder={getPlaceholder({ type, loading })}
         style={styles}

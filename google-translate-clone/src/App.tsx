@@ -1,4 +1,3 @@
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import { useStore } from './hooks/useStore'
@@ -24,7 +23,8 @@ function App () {
     result,
     setResult,
     interchangeLanguages,
-    loading
+    loading,
+   
   } = useStore()
 
   return (
@@ -72,6 +72,7 @@ function App () {
                 value={result}
                 onChange={setResult}
                 loading={loading}
+          
             />
           </Stack>
         </Col>
