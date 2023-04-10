@@ -1,5 +1,14 @@
-import { Configuration, OpenAIApi } from 'openai'
+import { API_URL } from '../utils/constants'
+import { type FromLanguage } from './../utils/types.d'
+import axios from 'axios'
 
-// no publicar esto en el fron pq quedará expuesta la API, armar un backend
+export const translate = async (body: { fromLanguage: FromLanguage, toLanguage: 'en' | 'es' | 'de' | 'fr', text: string }) => {
+  try {
+    const result = await axios.post(`${API_URL}/translate`, body)
 
-const apiKey = import.meta.env.VITE_OPENAI_API_KEY
+    return result.data as string
+  } catch (error) {
+    console.error('You should complete the fields:', error)
+    throw error
+  }
+}

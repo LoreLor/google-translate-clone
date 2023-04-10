@@ -15,31 +15,48 @@ export const reducer = (state: State, action: Action) => {
   // CON SWITCH O IF - puedo desestructurar const {type} = action
   if (type === 'INTERCHANGE_LANGUAGES') {
     if (state.fromLanguage === AUTO_LANGUAGE) return state // para que no me  permita cambiar el auoto a tolanguage
+
+    const loading = state.fromText !== ''
+
     return {
       ...state,
+      loading,
+      result: '',
       fromLanguage: state.toLanguage,
       toLanguage: state.fromLanguage
     }
   }
 
   if (type === 'SET_FROM_LANGUAGE') {
+    if (state.fromLanguage === action.payload) return state
+    const loading = state.fromText !== ''
+
     return {
       ...state,
-      fromLanguage: action.payload
+      fromLanguage: action.payload,
+      result: '',
+      loading
     }
   }
 
   if (type === 'SET_TO_LANGUAGE') {
+    if (state.toLanguage === action.payload) return state
+    const loading = state.fromText !== ''
+
     return {
       ...state,
-      toLanguage: action.payload
+      toLanguage: action.payload,
+      result: '',
+      loading
     }
   }
 
   if (type === 'SET_TEXT') {
+    const loading = action.payload !== ''
+
     return {
       ...state,
-      loading: true,
+      loading,
       fromText: action.payload,
       result: '' // para que cuando vaya escribiendo este vacio
     }

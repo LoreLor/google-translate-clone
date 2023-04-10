@@ -21,7 +21,7 @@ const getPlaceholder = ({ type, loading }: { type: SectionType, loading?: boolea
 }
 
 const Textarea: FC<Props> = ({ autoFocus, type, loading, value, onChange }) => {
-  const styles = type === SectionType.From ? commonStyles : { ...commonStyles, backgroundColor: '#f5f5f5', border: 'none' }
+  const styles = type === SectionType.From ? commonStyles : { ...commonStyles, backgroundColor: '#f8f8f8', border: 'none' }
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange(event.target.value)
@@ -31,7 +31,7 @@ const Textarea: FC<Props> = ({ autoFocus, type, loading, value, onChange }) => {
     <Form.Control
         as='textarea'
         disabled={type === SectionType.To}
-        autoFocus={ type === SectionType.From ? autoFocus : false}
+        autoFocus={ type === SectionType.From}
         placeholder={getPlaceholder({ type, loading })}
         style={styles}
         value={value}
